@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<item>
-		<text><![CDATA["
+		<text><![CDATA[
+			<table border=0>
 			<% @processes.each do |process, v| -%>
-				<%= process %>: <%= v %>
+				<tr><%= process %></td><td><%= v %></td></tr>
 			<% end -%>
-		"]]></text>
+			</table>
+		]]></text>
 		<type>0</type>
 	</item>
 </root>
