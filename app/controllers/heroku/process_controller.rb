@@ -6,11 +6,13 @@ class Heroku::ProcessController < ApplicationController
 		@processes = {}
 		ps = @heroku.ps(params[:app_name])
 		ps.each do |p|
-			process_name = p["process"].split(".")[0]
-			if @processes.has_key? p["process"].split(".")[0]
-				@processes[process_name] = (@processes[process_name] + 1)
-			else
-				@processes[process_name] = 1
+			if p["state"] == "up"
+				process_name = p["process"].split(".")[0]
+				if @processes.has_key? p["process"].split(".")[0]
+					@processes[process_name] = (@processes[process_name] + 1)
+				else
+					@processes[process_name] = 1
+				end
 			end
 		end
   end
